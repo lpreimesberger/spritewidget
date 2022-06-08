@@ -404,14 +404,15 @@ class SpriteBox extends RenderBox {
 
   // Updates
 
-  late int _frameCallbackId;
+  late int? _frameCallbackId;
 
   void _scheduleTick() {
-    _frameCallbackId = SchedulerBinding.instance.scheduleFrameCallback(_tick);
+      _frameCallbackId = SchedulerBinding.instance?.scheduleFrameCallback(_tick);
   }
 
   void _unscheduleTick() {
-    SchedulerBinding.instance.cancelFrameCallbackWithId(_frameCallbackId);
+      SchedulerBinding.instance?.cancelFrameCallbackWithId(_frameCallbackId!);
+
   }
 
   void _tick(Duration timeStamp) {
